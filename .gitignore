@@ -7,6 +7,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# env files: ignore real env files, keep templates in git
+.env*
+!.env.example
+!.env.template
+!.env.*.example
+
 node_modules
 dist
 dist-ssr
