@@ -1,10 +1,7 @@
+
+import { MockSettingsData } from "../MockData";
+
 export default function Settings() {
-    const mockSettings = [
-        { label: "Theme", value: "Light", options: ["Light", "Dark"] },
-        { label: "Notifications", value: "Enabled", options: ["Enabled", "Disabled"] },
-        { label: "Currency", value: "USD", options: ["USD", "EUR", "GBP"] },
-        { label: "Language", value: "English", options: ["English", "Spanish", "French"] },
-    ]
 
     return (
         <div>
@@ -12,7 +9,7 @@ export default function Settings() {
                 <h3>Settings</h3>
             </div>
             <div className="settings-list">
-                {mockSettings.map((setting, index) => (
+                {MockSettingsData.map((setting, index) => (
                     <div key={index} className="setting-item">
                         <label>{setting.label}</label>
                         <select defaultValue={setting.value}>

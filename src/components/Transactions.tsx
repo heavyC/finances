@@ -1,4 +1,10 @@
 import "/src/component-styles.css"
+import { MockTransactionsData } from "../MockData";
+
+console.log("---------");
+MockTransactionsData.map((txn) => {
+    console.log(txn);
+})
 
 export default function DashboardContent() {
     return (
@@ -7,20 +13,21 @@ export default function DashboardContent() {
                 <h3>Recent Transactions</h3>
             </div>
             <div className="transactions-list">
-                {Array.from({ length: 12 }).map((_, i) => (
-                    <div key={i} className="transaction-item">
+                {MockTransactionsData.map((item) => (
+                    <div key={item.txn_id} className="transaction-item">
                         <div className="transaction-details">
                             <div className="transaction-name">
-                                {i % 3 === 0 ? "Coffee Shop" : i % 3 === 1 ? "Grocery Store" : "Gas Station"}
+                                {item.txn_title}
                             </div>
                             <div className="transaction-date">
-                                {new Date(Date.now() - i * 86400000).toLocaleDateString()}
+                                posted: {item.date_posted}
                             </div>
                         </div>
-                        <div className={`transaction-amount ${i % 2 === 0 ? "expense" : "income"
-                            }`}
-                        >
-                            {i % 2 === 0 ? "-" : "+"}${(Math.random() * 100).toFixed(2)}
+                        <div className="transaction-date">
+                            updated: {item.date_updated}
+                        </div>
+                        <div className={`transaction-amount ${item.txn_type}`}>
+                            {item.txn_amount}
                         </div>
                     </div>
                 ))}

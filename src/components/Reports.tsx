@@ -1,33 +1,5 @@
 
-type monthlySpendingType = {
-    title: "Monthly Spending"
-    data: { category: string, amount: number }[]
-};
-type incomeVSExpensesType = {
-    title: "Income vs Expenses"
-    data: { month: string, income: number, expenses: number }[]
-};
-
-
-const mockReports: Array<monthlySpendingType | incomeVSExpensesType> = [
-    {
-        title: "Monthly Spending",
-        data: [
-            { category: "Food", amount: 450.00 },
-            { category: "Transportation", amount: 120.00 },
-            { category: "Entertainment", amount: 80.00 },
-            { category: "Utilities", amount: 200.00 },
-        ]
-    },
-    {
-        title: "Income vs Expenses",
-        data: [
-            { month: "January", income: 3200.00, expenses: 1840.25 },
-            { month: "February", income: 3200.00, expenses: 1950.50 },
-            { month: "March", income: 3200.00, expenses: 1700.75 },
-        ]
-    }
-]
+import { MockReportsData } from "../MockData";
 
 export default function Reports() {
     return (
@@ -35,7 +7,7 @@ export default function Reports() {
             <div className="panel-header">
                 <h3>Reports</h3>
             </div>
-            {mockReports.map((report, index) => (
+            {MockReportsData.map((report, index) => (
                 <div key={index} className="report-section" >
                     <h4>{report.title}</h4>
                     {
