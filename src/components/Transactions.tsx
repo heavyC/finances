@@ -1,10 +1,10 @@
 import "/src/component-styles.css"
 import { MockTransactionsData } from "../MockData";
 
-console.log("---------");
-MockTransactionsData.map((txn) => {
-    console.log(txn);
-})
+// console.log("---------");
+// MockTransactionsData.map((txn) => {
+//     console.log(txn);
+// })
 
 export default function DashboardContent() {
     return (
@@ -25,6 +25,9 @@ export default function DashboardContent() {
                         </div>
                         <div className="transaction-date">
                             updated: {item.date_updated}
+                        </div>
+                        <div className="category">
+                            updated: {item.category.displayName}
                         </div>
                         <div className={`transaction-amount ${item.txn_type}`}>
                             {item.txn_amount}
