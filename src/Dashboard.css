@@ -243,3 +243,72 @@
         min-width: 100px;
     }
 }
+
+/* Reports styles */
+.report-section {
+    margin-bottom: 24px;
+}
+
+.report-section h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: var(--text-h);
+}
+
+.report-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.report-section li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+}
+
+.report-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report-section th,
+.report-section td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.report-section th {
+    font-weight: 600;
+    color: var(--text-h);
+}
+
+/* Settings styles */
+.settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.setting-item label {
+    font-size: 15px;
+    color: var(--text-h);
+    font-weight: 500;
+}
+
+.setting-item select {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--panel-bg);
+    color: var(--text);
+    font-size: 14px;
+}

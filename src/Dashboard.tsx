@@ -1,5 +1,9 @@
+import { useState } from "react"
 import type { User } from "firebase/auth"
 import "./Dashboard.css"
+import DashboardContent from "./components/dashboard/DashboardContent"
+import Reports from "./components/Reports"
+import Settings from "./components/Settings"
 
 interface DashboardProps {
     user: User
@@ -7,6 +11,8 @@ interface DashboardProps {
 }
 
 export default function Dashboard({ user, onSignOut }: DashboardProps) {
+    const [activeView, setActiveView] = useState('dashboard')
+
     return (
         <div className="dashboard-layout">
             <aside className="sidebar">
@@ -14,18 +20,18 @@ export default function Dashboard({ user, onSignOut }: DashboardProps) {
                     <h2>Finance</h2>
                 </div>
                 <nav className="sidebar-nav">
-                    <a href="#dashboard" className="nav-item active">
+                    <div className={`nav-item ${activeView === 'dashboard' ? 'active' : ''}`} onClick={() => setActiveView('dashboard')}>
                         Dashboard
-                    </a>
-                    <a href="#transactions" className="nav-item">
+                    </div>
+                    <div className={`nav-item ${activeView === 'transactions' ? 'active' : ''}`} onClick={() => setActiveView('transactions')}>
                         Transactions
-                    </a>
-                    <a href="#reports" className="nav-item">
+                    </div>
+                    <div className={`nav-item ${activeView === 'reports' ? 'active' : ''}`} onClick={() => setActiveView('reports')}>
                         Reports
-                    </a>
-                    <a href="#settings" className="nav-item">
+                    </div>
+                    <div className={`nav-item ${activeView === 'settings' ? 'active' : ''}`} onClick={() => setActiveView('settings')}>
                         Settings
-                    </a>
+                    </div>
                 </nav>
                 <div className="sidebar-footer">
                     <div className="user-profile">
@@ -56,29 +62,10 @@ export default function Dashboard({ user, onSignOut }: DashboardProps) {
                 </section>
 
                 <section className="main-panel">
-                    <div className="panel-header">
-                        <h3>Recent Transactions</h3>
-                    </div>
-                    <div className="transactions-list">
-                        {Array.from({ length: 12 }).map((_, i) => (
-                            <div key={i} className="transaction-item">
-                                <div className="transaction-details">
-                                    <div className="transaction-name">
-                                        {i % 3 === 0 ? "Coffee Shop" : i % 3 === 1 ? "Grocery Store" : "Gas Station"}
-                                    </div>
-                                    <div className="transaction-date">
-                                        {new Date(Date.now() - i * 86400000).toLocaleDateString()}
-                                    </div>
-                                </div>
-                                <div
-                                    className={`transaction-amount ${i % 2 === 0 ? "expense" : "income"
-                                        }`}
-                                >
-                                    {i % 2 === 0 ? "-" : "+"}${(Math.random() * 100).toFixed(2)}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    {activeView === 'dashboard' && <DashboardContent />}
+                    {activeView === 'transactions' && <DashboardContent />}
+                    {activeView === 'reports' && <Reports />}
+                    {activeView === 'settings' && <Settings />}
                 </section>
             </main>
         </div>
