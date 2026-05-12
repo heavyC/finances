@@ -1,4 +1,4 @@
-import "/src/Dashboard.css"
+import "/src/component-styles.css"
 
 export default function DashboardContent() {
     return (

@@ -1,9 +1,10 @@
 import { useState } from "react"
 import type { User } from "firebase/auth"
-import "./Dashboard.css"
-import DashboardContent from "./components/dashboard/DashboardContent"
+import "/src/component-styles.css"
+import DashboardContent from "./components/DashboardContent"
 import Reports from "./components/Reports"
 import Settings from "./components/Settings"
+import Transactions from "./components/Transactions"
 
 interface DashboardProps {
     user: User
@@ -63,7 +64,7 @@ export default function Dashboard({ user, onSignOut }: DashboardProps) {
 
                 <section className="main-panel">
                     {activeView === 'dashboard' && <DashboardContent />}
-                    {activeView === 'transactions' && <DashboardContent />}
+                    {activeView === 'transactions' && <Transactions />}
                     {activeView === 'reports' && <Reports />}
                     {activeView === 'settings' && <Settings />}
                 </section>

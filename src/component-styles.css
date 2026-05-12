@@ -36,6 +36,7 @@
     text-decoration: none;
     border-left: 3px solid transparent;
     transition: all 0.2s ease;
+    text-align: left;
 }
 
 .nav-item:hover {
