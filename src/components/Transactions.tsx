@@ -1,5 +1,6 @@
 import "/src/component-styles.css"
 import { MockTransactionsData } from "../MockData";
+import { getCategoryDisplayName } from "../data/Categories.ts";
 
 // console.log("---------");
 // MockTransactionsData.map((txn) => {
@@ -27,7 +28,7 @@ export default function DashboardContent() {
                             updated: {item.date_updated}
                         </div>
                         <div className="category">
-                            updated: {item.category.displayName}
+                            {getCategoryDisplayName(item.category)}
                         </div>
                         <div className={`transaction-amount ${item.txn_type}`}>
                             {item.txn_amount}
